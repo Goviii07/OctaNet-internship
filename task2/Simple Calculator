@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-900">
+    <div class="bg-gray-800 p-6 rounded-2xl shadow-lg w-72 text-white">
+        <div id="display" class="mb-4 text-right text-2xl font-mono bg-gray-700 p-4 rounded-lg">0</div>
+        <div class="grid grid-cols-4 gap-3">
+            <button class="bg-gray-600 p-4 rounded-lg text-xl hover:bg-gray-500" onclick="appendValue('7')">7</button>
+            <button class="bg-gray-600 p-4 rounded-lg text-xl hover:bg-gray-500" onclick="appendValue('8')">8</button>
+            <button class="bg-gray-600 p-4 rounded-lg text-xl hover:bg-gray-500" onclick="appendValue('9')">9</button>
+            <button class="bg-gray-600 p-4 rounded-lg text-xl hover:bg-gray-500" onclick="appendValue('/')">/</button>
+            <button class="bg-gray-600 p-4 rounded-lg text-xl hover:bg-gray-500" onclick="appendValue('4')">4</button>
+            <button class="bg-gray-600 p-4 rounded-lg text-xl hover:bg-gray-500" onclick="appendValue('5')">5</button>
+            <button class="bg-gray-600 p-4 rounded-lg text-xl hover:bg-gray-500" onclick="appendValue('6')">6</button>
+            <button class="bg-gray-600 p-4 rounded-lg text-xl hover:bg-gray-500" onclick="appendValue('*')">*</button>
+            <button class="bg-gray-600 p-4 rounded-lg text-xl hover:bg-gray-500" onclick="appendValue('1')">1</button>
+            <button class="bg-gray-600 p-4 rounded-lg text-xl hover:bg-gray-500" onclick="appendValue('2')">2</button>
+            <button class="bg-gray-600 p-4 rounded-lg text-xl hover:bg-gray-500" onclick="appendValue('3')">3</button>
+            <button class="bg-gray-600 p-4 rounded-lg text-xl hover:bg-gray-500" onclick="appendValue('-')">-</button>
+            <button class="bg-gray-600 p-4 rounded-lg text-xl hover:bg-gray-500" onclick="appendValue('0')">0</button>
+            <button class="bg-gray-600 p-4 rounded-lg text-xl hover:bg-gray-500" onclick="appendValue('.')">.</button>
+            <button class="bg-gray-600 p-4 rounded-lg text-xl hover:bg-gray-500" onclick="calculateResult()">=</button>
+            <button class="bg-gray-600 p-4 rounded-lg text-xl hover:bg-gray-500" onclick="appendValue('+')">+</button>
+            <button class="col-span-4 bg-red-600 p-4 rounded-lg text-xl hover:bg-red-500" onclick="clearDisplay()">Clear</button>
+        </div>
+    </div>
+    
+    <script>
+        let display = document.getElementById('display');
+        
+        function appendValue(value) {
+            if (display.innerText === '0' || display.innerText === 'Error') {
+                display.innerText = value;
+            } else {
+                display.innerText += value;
+            }
+        }
+
+        function clearDisplay() {
+            display.innerText = '0';
+        }
+
+        function calculateResult() {
+            try {
+                display.innerText = eval(display.innerText);
+            } catch {
+                display.innerText = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
